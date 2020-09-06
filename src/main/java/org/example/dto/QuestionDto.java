@@ -11,4 +11,5 @@ public class QuestionDto {
 
     private Long id;
     private String question;
+    private Long categoryId;
 }
