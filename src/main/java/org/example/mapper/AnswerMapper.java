@@ -9,9 +9,9 @@ import org.mapstruct.Mappings;
 @Mapper(componentModel = "spring")
 public interface AnswerMapper {
 
-    @Mappings({@Mapping(source = "id", target = "question.id")})
+    @Mappings({@Mapping(source = "questionId", target = "question.id")})
     Answer dtoToModel(AnswerDto dto);
 
-    @Mappings({@Mapping(source = "question.id", target = "id")})
+    @Mappings({@Mapping(source = "question.id", target = "questionId")})
     AnswerDto modelToDto(Answer answer);
 }

@@ -26,9 +26,8 @@ public class AnswerService {
         return answerRepository.findAll(pageable).toList();
     }
 
-    public List<AnswerDto> getAllByQuestion(String question, Integer pageNr, Integer pageSize) throws NoAnswerFoundException {
-        Pageable pageable = PageRequest.of(pageNr, pageSize);
-        List<Answer> answers = answerRepository.findAllByQuestion(pageable, question);
+    public List<AnswerDto> getAllByQuestionId(Long questionId) throws NoAnswerFoundException {
+        List<Answer> answers = answerRepository.findAllByQuestionId(questionId);
 
         if (answers.size() == 0)
             throw new NoAnswerFoundException();
