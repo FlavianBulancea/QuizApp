@@ -1,26 +1,27 @@
-import React , { useState, useEffect } from 'react'
-import QuestionService from '../services/QuestionService'
+import React from 'react'
+//import QuestionService from '../services/QuestionService'
+import axios from 'axios'
 
-const QuizComponent = (props) => {
 
-    // constructor() {
-    //     this.state = {
-    //         questions:[]
-    //     }
-    // }
-    const [questions, setQuestions] = useState([])
+const api = axios.create({
+    categoryURL: 'http://localhost:8080/category/all'
+})
 
-    useEffect(() => {
-        QuestionService.getQuestions().then((response) => {
-            setQuestions(response.data)
+
+class QuizComponent extends React.Component {
+
+    constructor() {
+        super()
+        api.get('/').then(res => {
+            console.log(res.data)
         })
-    }, []);
-
-
-    
-    return(
-        <div>{questions.id}</div>
-    )
+    }
+   
+    render() {
+        return(
+            <div>hello</div>
+        )
+    }
     
 
 }
