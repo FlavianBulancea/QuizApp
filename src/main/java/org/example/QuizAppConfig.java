@@ -11,6 +11,6 @@ public class QuizAppConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedMethods("GET","POST","PUT","OPTION","DELETE")
-                .allowedOrigins("http://localhost:4200");
+                .allowedOrigins("http://localhost:3000");
     }
 }
