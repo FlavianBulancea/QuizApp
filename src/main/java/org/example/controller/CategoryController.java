@@ -22,6 +22,6 @@ public class CategoryController {
     @GetMapping("/all")
     public ResponseEntity<List<CategoryDto>> getAll(){
 
-        return new ResponseEntity<>(categoryService.getAll(), new HttpHeaders(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(categoryService.getAll(), new HttpHeaders(), HttpStatus.OK);
     }
 }

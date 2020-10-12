@@ -4,14 +4,14 @@ import axios from 'axios'
 
 
 const api = axios.create({
-    categoryURL: 'http://localhost:8080/category/all'
+    baseURL: 'http://localhost:8080/category/all'
 })
 
 
 class QuizComponent extends React.Component {
 
     constructor() {
-        super()
+        super();
         api.get('/').then(res => {
             console.log(res.data)
         })
