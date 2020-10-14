@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
+
 
 @Data
 @AllArgsConstructor
@@ -13,6 +14,6 @@ public class HighScoreDto {
 
     private Long id;
     private Long score;
-    private LocalDateTime dateTime;
+    private Date date;
     private Long user_id;
 }

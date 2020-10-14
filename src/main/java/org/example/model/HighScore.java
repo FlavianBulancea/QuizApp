@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 @Entity
 @Data
@@ -19,7 +19,7 @@ public class HighScore {
 
     private Long score;
 
-    private LocalDateTime dateTime;
+    private Date date;
 
     @ManyToOne
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_high_score_user"))

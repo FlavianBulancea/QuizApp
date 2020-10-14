@@ -20,7 +20,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<UserDto>> getAll(){
 
         try {

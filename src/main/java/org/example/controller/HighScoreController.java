@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/highscore")
+@RequestMapping("/highScores")
 public class HighScoreController {
 
     @Autowired
@@ -25,11 +25,11 @@ public class HighScoreController {
 
 
 
-    @GetMapping("/all")
+    @GetMapping("/first10")
     public ResponseEntity<List<HighScoreDto>> getAll(){
 
         try {
-            return new ResponseEntity<>(highScoreService.getAll(), new HttpHeaders(), HttpStatus.OK);
+            return new ResponseEntity<>(highScoreService.getFirst10(), new HttpHeaders(), HttpStatus.OK);
         } catch (NoHighScoreFoundException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

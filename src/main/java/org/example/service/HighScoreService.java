@@ -18,9 +18,9 @@ public class HighScoreService {
     @Autowired
     private HighScoreMapper highScoreMapper;
 
-    public List<HighScoreDto> getAll() throws NoHighScoreFoundException {
+    public List<HighScoreDto> getFirst10() throws NoHighScoreFoundException {
 
-        List<HighScoreDto> highScoreDtoList = highScoreRepository.findAll().stream()
+        List<HighScoreDto> highScoreDtoList = highScoreRepository.findTop10ByOrderByScoreDesc().stream()
                 .map(highScores -> highScoreMapper.modelToDto(highScores))
                 .collect(Collectors.toList());
 
