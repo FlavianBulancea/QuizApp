@@ -9,11 +9,25 @@ import Checkbox from "./Checkbox";
 const Category = (props) => {
     const [showSelect, setShowSelect] = useState(false)
     const [listOfCategories, setListOfCategories] = useState([])
-    const [listOfSelectedCategories, setListOfSelectedCategories] = useState([])
 
+
+    Axios.get(url.categories)
+    .then((res) => {
+        const localList = res.data.map((item) => {
+            return {
+                id: item.id,
+                category: item.category,
+                isSelected: false,
+            };
+        });
+        setListOfCategories(localList);
+    })
+    .catch((err) => {
+        console.error(err)
+        alert(err)
+    })
 
     const goToQuestions = () => {
-        setListOfSelectedCategories(listOfCategories)
         const { history } = props;
         history.push('questions');
     }
@@ -33,29 +47,19 @@ const Category = (props) => {
 
 
     const categoryList = (e) => {
+
         if(e.target.value === 'custom') {
             setShowSelect(true)
-        }else {
-            setShowSelect(!showSelect)
         }
-
-        Axios.get(url.categories)
-            .then((res) => {
-                const localList = res.data.map((item) => {
-                    return {
-                        id: item.id,
-                        category: item.category,
-                        isSelected: false,
-                    };
-                });
-                setListOfCategories(localList);
+        if(e.target.value === 'all') {
+            setShowSelect(false)
+            let localVar = [...listOfCategories]
+            localVar.map((item) => {
+                console.log(item.id)
             })
-            .catch((err) => {
-                console.error(err)
-                alert(err)
-            });
-    };
-
+        }
+    }
+    
 
 
     return (
