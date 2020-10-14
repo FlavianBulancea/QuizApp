@@ -1,14 +1,15 @@
+
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import QuizComponent from './components/QuizComponent'
+import { BrowserRouter } from 'react-router-dom';
+
+import Router from './routes';
 
 function App() {
-  return (
-    <div className="App">
-      <QuizComponent/>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Router />
+        </BrowserRouter>
+    );
 }
 
 export default App;
