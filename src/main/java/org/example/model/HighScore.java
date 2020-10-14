@@ -17,11 +17,12 @@ public class HighScore {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-//    private Long score;
-//
-//    private LocalDateTime dateTime;
-//
-//    @OneToOne(mappedBy = "category")
-//    private User user;
+    private Long score;
+
+    private LocalDateTime dateTime;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_high_score_user"))
+    private User user;
 
 }

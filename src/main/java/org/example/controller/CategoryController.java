@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.dto.CategoryDto;
+import org.example.exception.category.NoCategoryFoundException;
 import org.example.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -22,6 +23,11 @@ public class CategoryController {
     @GetMapping("/all")
     public ResponseEntity<List<CategoryDto>> getAll(){
 
-        return new ResponseEntity<>(categoryService.getAll(), new HttpHeaders(), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(categoryService.getAll(), new HttpHeaders(), HttpStatus.OK);
+        }catch (NoCategoryFoundException e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
     }
 }

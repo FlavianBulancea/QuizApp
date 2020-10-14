@@ -1,26 +1,32 @@
 package org.example.service;
 
-import org.example.model.HighScore;
+import org.example.dto.HighScoreDto;
+import org.example.exception.HighScore.NoHighScoreFoundException;
+import org.example.mapper.HighScoreMapper;
 import org.example.repository.HighScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Component
+@Service
 public class HighScoreService {
 
     @Autowired
     private HighScoreRepository highScoreRepository;
+    @Autowired
+    private HighScoreMapper highScoreMapper;
 
-    public List<HighScore> getHighScores(){
+    public List<HighScoreDto> getAll() throws NoHighScoreFoundException {
 
-        List<HighScore> highScores = new ArrayList<>();
-        Iterable<HighScore> highScoreIterable = highScoreRepository.findAll();
+        List<HighScoreDto> highScoreDtoList = highScoreRepository.findAll().stream()
+                .map(highScores -> highScoreMapper.modelToDto(highScores))
+                .collect(Collectors.toList());
 
-        highScoreIterable.forEach(highScores::add);
+        if (highScoreDtoList.size() == 0)
+            throw new NoHighScoreFoundException();
 
-        return highScores;
+        return highScoreDtoList;
     }
 }

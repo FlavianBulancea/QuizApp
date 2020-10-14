@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,8 +17,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-//    private String username;
-//
-//    @OneToOne(mappedBy = "id")
-//    private HighScore highScore;
+    private String username;
+
+    @OneToMany(mappedBy = "user")
+    private List<HighScore> highScore;
 }

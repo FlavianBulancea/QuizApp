@@ -14,4 +14,5 @@ public class HighScoreDto {
     private Long id;
     private Long score;
     private LocalDateTime dateTime;
+    private Long user_id;
 }
