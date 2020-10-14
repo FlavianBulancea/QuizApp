@@ -1,4 +1,6 @@
 
 export const url = {
-    category: "http://localhost:8080/category/all",
+    categories: "http://localhost:8080/categories",
+    highScore: "http://localhost:8080/highScores/first10",
+    questions: 'http://localhost:8080/questions?'
 };

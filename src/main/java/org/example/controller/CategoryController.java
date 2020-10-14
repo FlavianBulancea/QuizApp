@@ -23,15 +23,11 @@ public class CategoryController {
     @GetMapping
     public ResponseEntity<List<CategoryDto>> getAll(){
 
-<<<<<<< HEAD
-        return new ResponseEntity<>(categoryService.getAll(), new HttpHeaders(), HttpStatus.OK);
-=======
         try {
             return new ResponseEntity<>(categoryService.getAll(), new HttpHeaders(), HttpStatus.OK);
         }catch (NoCategoryFoundException e){
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
->>>>>>> 0da8c9f87bc21eee4a1d59745b3809e16376e1d1
     }
 }
