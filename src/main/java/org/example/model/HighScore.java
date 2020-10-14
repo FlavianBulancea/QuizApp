@@ -1,12 +1,16 @@
 package org.example.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class HighScore {
 
     @Id
@@ -15,9 +19,10 @@ public class HighScore {
 
     private Long score;
 
-    private LocalDateTime dateTime;
+    private Date date;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_high_score_user"))
     private User user;
 
 }

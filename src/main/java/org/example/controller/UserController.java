@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.dto.UserDto;
+import org.example.exception.User.NoUserFoundException;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -19,9 +20,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<UserDto>> getAll(){
 
-        return new ResponseEntity<>(userService.getAll(), new HttpHeaders(), HttpStatus.NOT_FOUND);
+        try {
+            return new ResponseEntity<>(userService.getAll(), new HttpHeaders(), HttpStatus.OK);
+        } catch (NoUserFoundException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
     }
 }

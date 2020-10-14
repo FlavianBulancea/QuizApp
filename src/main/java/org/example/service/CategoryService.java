@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.dto.CategoryDto;
+import org.example.exception.category.NoCategoryFoundException;
 import org.example.mapper.CategoryMapper;
 import org.example.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class CategoryService {
     @Autowired
     CategoryMapper categoryMapper;
 
-    public List<CategoryDto> getAll(){
+    public List<CategoryDto> getAll() throws NoCategoryFoundException {
 
         List<CategoryDto> categoryDtoList = categoryRepository.findAll().stream()
                 .map(category -> categoryMapper.modelToDto(category))

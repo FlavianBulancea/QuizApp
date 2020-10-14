@@ -20,7 +20,7 @@ public class Question {
     private String question;
 
     @ManyToOne
-    @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_question_category"))
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @OneToMany(mappedBy = "question")

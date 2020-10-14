@@ -11,22 +11,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/question")
+@RequestMapping("/questions")
 public class QuestionController {
 
     @Autowired
     private QuestionService questionService;
 
-    @GetMapping
-    private ResponseEntity<List<QuestionDto>> getAll(
+    @RequestMapping
+    private ResponseEntity<List<QuestionDto>> getByCategoriesIdOrAll(
             @RequestParam(name = "pn", defaultValue = "0") Integer pageNr,
             @RequestParam(name = "ps", defaultValue = "10") Integer pageSize,
-            @RequestParam(name = "category", required = false) String category) {
+            @RequestParam(name = "categoryId", required = false) List<Long> categoriesId) {
 
         try {
             return new ResponseEntity<>
-                    (questionService.getByCategoryOrAll(category, pageNr, pageSize), HttpStatus.OK);
-        } catch (NoQuestionFoundException e){
+                    (questionService.getByCategoriesIdOrAll(categoriesId, pageNr, pageSize), HttpStatus.OK);
+        } catch (NoQuestionFoundException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

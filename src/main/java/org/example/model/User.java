@@ -1,11 +1,16 @@
 package org.example.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -14,6 +19,6 @@ public class User {
 
     private String username;
 
-    @OneToOne
-    private HighScore highScore;
+    @OneToMany(mappedBy = "user")
+    private List<HighScore> highScore;
 }
