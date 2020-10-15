@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,8 +33,12 @@ public class AnswerService {
         if (answers.size() == 0)
             throw new NoAnswerFoundException();
 
-        return answers.stream()
+        List<AnswerDto> answerDtoList = answers.stream()
                 .map(answer -> answerMapper.modelToDto(answer))
                 .collect(Collectors.toList());
+
+        Collections.shuffle(answerDtoList);
+
+        return answerDtoList;
     }
 }
