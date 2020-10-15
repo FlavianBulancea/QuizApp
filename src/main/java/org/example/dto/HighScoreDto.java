@@ -15,5 +15,5 @@ public class HighScoreDto {
     private Long id;
     private Long score;
     private Date date;
-    private Long user_id;
+    private String username;
 }

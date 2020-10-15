@@ -1,7 +1,8 @@
 package org.example.service;
 
 import org.example.dto.HighScoreDto;
-import org.example.exception.HighScore.NoHighScoreFoundException;
+import org.example.exception.highScore.NoHighScoreFoundException;
+import org.example.exception.QuizAppException;
 import org.example.mapper.HighScoreMapper;
 import org.example.repository.HighScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,11 @@ public class HighScoreService {
             throw new NoHighScoreFoundException();
 
         return highScoreDtoList;
+    }
+
+    public HighScoreDto save(HighScoreDto highScoreDto) throws QuizAppException{
+        if(highScoreDto.getId() > 0 && highScoreRepository.existsById(highScoreDto.getId()))
+            throw new QuizAppException();
+        return save(highScoreDto);
     }
 }

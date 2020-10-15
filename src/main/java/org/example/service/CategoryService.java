@@ -24,6 +24,9 @@ public class CategoryService {
                 .map(category -> categoryMapper.modelToDto(category))
                 .collect(Collectors.toList());
 
+        if (categoryDtoList.size() == 0)
+            throw new NoCategoryFoundException();
+
         return categoryDtoList;
     }
 }

@@ -1,4 +1,4 @@
-package org.example.exception.HighScore;
+package org.example.exception.highScore;
 
 import org.example.exception.QuizAppException;
 
