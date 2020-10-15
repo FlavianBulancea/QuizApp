@@ -21,11 +21,11 @@ public class QuestionController {
     private ResponseEntity<List<QuestionDto>> getByCategoriesIdOrAll(
             @RequestParam(name = "pn", defaultValue = "0") Integer pageNr,
             @RequestParam(name = "ps", defaultValue = "10") Integer pageSize,
-            @RequestParam(name = "categoryId", required = false) List<Long> categoriesId) {
+            @RequestBody(required = false) List<Long> ids) {
 
         try {
             return new ResponseEntity<>
-                    (questionService.getByCategoriesIdOrAll(categoriesId, pageNr, pageSize), HttpStatus.OK);
+                    (questionService.getByCategoriesIdOrAll(ids, pageNr, pageSize), HttpStatus.OK);
         } catch (NoQuestionFoundException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
