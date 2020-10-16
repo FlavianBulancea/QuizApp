@@ -33,16 +33,15 @@ public class HighScoreController {
     }
 
     @PostMapping
-    public ResponseEntity<HighScoreDto> save(@RequestBody String highScoreDto){
+    public ResponseEntity<HighScoreDto> save(@RequestBody HighScoreDto highScoreDto){
 
         System.out.println(highScoreDto);
 
-//        try {
-//            return new ResponseEntity<>(highScoreService.save(highScoreDto), HttpStatus.OK);
-//        } catch (NoNameInsertedException e) {
-//            e.printStackTrace();
-//            return new ResponseEntity<>(HttpStatus.CONFLICT);
-//        }
-        return null;
+        try {
+            return new ResponseEntity<>(highScoreService.save(highScoreDto), HttpStatus.OK);
+        } catch (NoNameInsertedException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
     }
 }

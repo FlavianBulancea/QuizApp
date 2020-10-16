@@ -10,11 +10,11 @@ const Results = ({score}) => {
     const [yourName, setYourName] = useState('')
 
     var today = new Date();
-    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
-    const constructData = (score, date, name) => {
+    const constructData = (score, date, username) => {
 
-        Axios.post(url.score, {score,date,name})
+        Axios.post(url.score, {score,date,username})
             .then((res) => {
                 console.log(res.data)
             })

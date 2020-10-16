@@ -2,7 +2,6 @@ package org.example.service;
 
 import org.example.dto.HighScoreDto;
 import org.example.exception.highScore.NoHighScoreFoundException;
-import org.example.exception.QuizAppException;
 import org.example.exception.highScore.NoNameInsertedException;
 import org.example.mapper.HighScoreMapper;
 import org.example.model.HighScore;
