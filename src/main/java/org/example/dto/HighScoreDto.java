@@ -16,4 +16,6 @@ public class HighScoreDto {
     private Long score;
     private Date date;
     private String username;
+
+
 }

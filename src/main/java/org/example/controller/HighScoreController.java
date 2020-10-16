@@ -2,7 +2,7 @@ package org.example.controller;
 
 import org.example.dto.HighScoreDto;
 import org.example.exception.highScore.NoHighScoreFoundException;
-import org.example.exception.QuizAppException;
+import org.example.exception.highScore.NoNameInsertedException;
 import org.example.service.HighScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -33,7 +33,16 @@ public class HighScoreController {
     }
 
     @PostMapping
-    public ResponseEntity<HighScoreDto> save(@RequestBody HighScoreDto highScoreDto){
-        return new ResponseEntity<>(highScoreService.save(highScoreDto), HttpStatus.OK);
+    public ResponseEntity<HighScoreDto> save(@RequestBody String highScoreDto){
+
+        System.out.println(highScoreDto);
+
+//        try {
+//            return new ResponseEntity<>(highScoreService.save(highScoreDto), HttpStatus.OK);
+//        } catch (NoNameInsertedException e) {
+//            e.printStackTrace();
+//            return new ResponseEntity<>(HttpStatus.CONFLICT);
+//        }
+        return null;
     }
 }
