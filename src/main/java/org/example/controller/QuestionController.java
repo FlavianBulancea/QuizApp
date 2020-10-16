@@ -25,7 +25,7 @@ public class QuestionController {
 
         try {
             return new ResponseEntity<>
-                    (questionService.getByCategoriesIdOrAll(categoriesId, pageNr, pageSize), HttpStatus.OK);
+                (questionService.getByCategoriesIdOrAll(categoriesId, pageNr, pageSize), HttpStatus.OK);
         } catch (NoQuestionFoundException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

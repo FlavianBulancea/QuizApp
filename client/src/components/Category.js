@@ -15,20 +15,6 @@ const Category = ({dispatch, questions, history}) => {
     const [showSelect, setShowSelect] = useState(false)
     const [listOfCategories, setListOfCategories] = useState([])
 
-    // useEffect(() => {
-    //     const storeQuestions= () => {
-    //         Axios.post(url.selected, {id})
-    //         .then((res) => {
-    //             serQuestions(res.data)
-    //         })
-    //         .catch((err) => {
-    //             console.log(err)
-    //             alert(err)
-    //         })  
-    //     }
-    //     storeQuestions()
-    // }, [id]);
-
     
     const goToQuestions = () => {
         const localCategories = [...listOfCategories]
@@ -40,6 +26,7 @@ const Category = ({dispatch, questions, history}) => {
         }
 
         if(ids.length > 0) {
+            console.log('ids.....'+ids)
             Axios.post(url.selected+ids, {ids})
             .then((res) => {
                 let localCat = res.data
