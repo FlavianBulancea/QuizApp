@@ -24,8 +24,8 @@ public class QuestionController {
             @RequestParam(name = "categoriesId", required = false) List<Long> categoriesId) {
 
         try {
-            return new ResponseEntity<>
-                (questionService.getByCategoriesIdOrAll(categoriesId, pageNr, pageSize), HttpStatus.OK);
+            return new ResponseEntity<>(questionService.getByCategoriesIdOrAll
+                    (categoriesId, pageNr, pageSize), HttpStatus.OK);
         } catch (NoQuestionFoundException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
