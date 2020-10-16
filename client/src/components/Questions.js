@@ -1,15 +1,20 @@
-import React , {useState, useEffect}from 'react'
+import React , {useState, useEffect, setState}from 'react'
 import { useParams } from 'react-router-dom';
 
 import { url } from '../env'
 import Axios from 'axios'
+import { connect } from 'react-redux'
 
-const Questions = () => {
+import { updateScore } from '../actions/scoreActions'
+
+
+const Questions = ({dispatch, questions, history}) => {
     const [answers, setAnswers] = useState([])
+    const [score, setScore] = useState(0)
 
-    let questions = JSON.parse(localStorage.getItem('QuestionList'));
     let {id} = useParams()
-
+  
+    
     useEffect(() => {
         const storeAnswers = () => {
             Axios.get(url.answers+id, {id})
@@ -24,27 +29,35 @@ const Questions = () => {
         storeAnswers()
     }, [id]);
 
-    const checkAnswer = (answer) => {
-        if (answer === true) {
-            console.log("bv ba")
+    const checkAnswer = (answer, question, questions) => {
+        console.log(questions.indexOf(question))
+        if(answer === true) {
+            setScore(score+1)
+            dispatch(updateScore(score+1))
+        }
+        if(questions.indexOf(question) === -1){
+            history.push(`/results`)
+        }else{
+            history.push(`/questions/${question.id}`)
         }
     }
 
-    const showAnswers = () => {
-        console.log(answers)
-    }
-    
+
+
+
     return (
         <div>
-            {questions?.map(item => {
-                if (id == item.id)
+            {questions.map((item,index) => {
+                if (id == item.id) {
                     return (
                         <div key={item.id}>
+                            <div>{index+1}/20</div>
                             <div>{item.question}</div>
+
                             {answers.map(ans => {
                                 return(
                                     <div key={ans.id}>
-                                        <button onClick={() => checkAnswer(ans.correct)}>
+                                        <button onClick={() => checkAnswer(ans.correct, questions[index+1], questions)}>
                                             {ans.answer}
                                         </button>
                                     </div>
@@ -53,11 +66,17 @@ const Questions = () => {
                         </div>
 
                     )
+                }
             } )}
-            <button onClick={() => showAnswers()}>AERFEFEFREfr</button>
         </div>
     )
 }
 
 
-export default Questions;
+const mapStateToProps = state => {
+    return {
+      questions: state.categoryReducer.questions,
+    }
+}
+  
+export default connect(mapStateToProps)(Questions)

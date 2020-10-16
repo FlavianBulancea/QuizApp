@@ -1,37 +1,61 @@
 import React , { useState } from 'react'
 
-import { url } from '../env'
 import Axios from 'axios'
+import { connect } from 'react-redux'
+
+import { url } from '../env'
 import Checkbox from "./Checkbox";
 
+import {updateCategory} from '../actions/categoryActions'
 
 
 
-const Category = (props) => {
+
+const Category = ({dispatch, questions, history}) => {
     const [showSelect, setShowSelect] = useState(false)
     const [listOfCategories, setListOfCategories] = useState([])
+
+    // useEffect(() => {
+    //     const storeQuestions= () => {
+    //         Axios.post(url.selected, {id})
+    //         .then((res) => {
+    //             serQuestions(res.data)
+    //         })
+    //         .catch((err) => {
+    //             console.log(err)
+    //             alert(err)
+    //         })  
+    //     }
+    //     storeQuestions()
+    // }, [id]);
+
     
     const goToQuestions = () => {
         const localCategories = [...listOfCategories]
-        let ids = localCategories.filter(item => item.isSelected === true)
+        let ids = []
+        for (let i=0; i<localCategories.length;i++) {
+            if (localCategories[i].isSelected === true) {
+                ids.push(localCategories[i].id)
+            }
+        }
 
         if(ids.length > 0) {
-            Axios.post(url.selected, {ids})
+            Axios.post(url.selected+ids, {ids})
             .then((res) => {
                 let localCat = res.data
                 console.log(localCat)
-                localStorage.setItem('QuestionList', JSON.stringify(localCat));
+                dispatch(updateCategory(localCat))
+                history.push(`/questions/${localCat[0]?.id}`)
             })
             .catch((err) => {
                 console.log(err)
                 alert(err)
             })
-            let quest = JSON.parse(localStorage.getItem('QuestionList'));
-            const { history } = props;
-            history.push(`questions/${quest[0].id}`);
+            
+            
         }else {
             console.log('Alege o categorie')
-            alert('choose a category muistule')
+            alert('choose a category')
         }    
     }
 
@@ -117,4 +141,10 @@ const Category = (props) => {
     )
 }
 
-export default Category;
+const mapStateToProps = state => {
+    return {
+      questions: state.categoryReducer.questions,
+    }
+}
+export default connect(mapStateToProps)(Category)
+  

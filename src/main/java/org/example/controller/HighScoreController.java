@@ -34,11 +34,6 @@ public class HighScoreController {
 
     @PostMapping
     public ResponseEntity<HighScoreDto> save(@RequestBody HighScoreDto highScoreDto){
-        try {
-            return new ResponseEntity<>(highScoreService.save(highScoreDto), HttpStatus.OK);
-        } catch (QuizAppException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
-        }
+        return new ResponseEntity<>(highScoreService.save(highScoreDto), HttpStatus.OK);
     }
 }

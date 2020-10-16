@@ -31,9 +31,7 @@ public class HighScoreService {
         return highScoreDtoList;
     }
 
-    public HighScoreDto save(HighScoreDto highScoreDto) throws QuizAppException{
-        if(highScoreDto.getId() > 0 && highScoreRepository.existsById(highScoreDto.getId()))
-            throw new QuizAppException();
+    public HighScoreDto save(HighScoreDto highScoreDto){
         return save(highScoreDto);
     }
 }
