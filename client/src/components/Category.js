@@ -103,26 +103,26 @@ const Category = ({dispatch, questions, history}) => {
 
 
     return (
-        <div>
-            <div>Choose a Category:</div>
-            <div onChange={(e) => categoryList(e)}>
-                <input type="radio" name="choise" value="all"/> All
-                <input type="radio" name="choise" value="custom"/> Custom
-            </div>
-            {showSelect && 
-                <div className='category-list'>
-                        {listOfCategories.map((item, index) => {
-                            return <Checkbox
-                            label={item.category}
-                            isSelected={item.isSelected}
-                            onCheckboxChange={(e) => handleCheckboxChange(e)}
-                            key={index}
-                            />
-                        })}
+        <div className='home-div'>
+            <div className='categories'>
+                <div className='choose-category'>Choose a Category:</div>
+                <div onChange={(e) => categoryList(e)} className='radio-button'>
+                    <input type="radio" name="choise" value="all" className='all'/> All
+                    <input type="radio" name="choise" value="custom"/> Custom
                 </div>
-            }
-            <div>
-                <button onClick={() => goToQuestions()}>Next</button>
+                {showSelect && 
+                    <div className='category-list'>
+                            {listOfCategories.map((item, index) => {
+                                return <Checkbox
+                                label={item.category}
+                                isSelected={item.isSelected}
+                                onCheckboxChange={(e) => handleCheckboxChange(e)}
+                                key={index}
+                                />
+                            })}
+                    </div>
+                }
+                <button className='next-button' onClick={() => goToQuestions()}>Next</button>
             </div>
         </div>
     )

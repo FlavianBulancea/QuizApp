@@ -1,26 +1,25 @@
 import React from 'react'
-//import QuestionService from '../services/QuestionService'
-import { url } from '../env'
-import Axios from 'axios'
+
 
 
 
 const Home = (props) => {
-
-    Axios.get(url.questions)
-    .then((res) => {
-        console.log(res.data)
-    });
 
     const goToGategories = () => {
         const { history } = props;
         history.push('categories');
     };
 
+    const goToScores = () => {
+        const { history } = props;
+        history.push('high-scores');
+    };
+
+
     return(
-        <div>
+        <div className='home-div'>
             <button className='play-button' onClick={() => goToGategories()}>PLAY</button>
-            <button className='high-score'>HIGH SCORES</button>
+            <button className='high-score' onClick={() => goToScores()}>HIGH SCORES</button>
         </div>
     )
     
