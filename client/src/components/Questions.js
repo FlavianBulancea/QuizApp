@@ -46,18 +46,18 @@ const Questions = ({dispatch, questions, history}) => {
 
 
     return (
-        <div>
+        <div className='home-div'>
             {questions.map((item,index) => {
                 if (id == item.id) {
                     return (
-                        <div key={item.id}>
-                            <div>{index+1}/20</div>
-                            <div>{item.question}</div>
+                        <div key={item.id} className='question-div'>
+                            <div className='index'>{index+1}/20</div>
+                            <div className='question-body'>{item.question}</div>
 
                             {answers.map(ans => {
                                 return(
-                                    <div key={ans.id}>
-                                        <button onClick={() => checkAnswer(ans.correct, questions[index+1], questions)}>
+                                    <div key={ans.id} >
+                                        <button className='answers' onClick={() => checkAnswer(ans.correct, questions[index+1], questions)}>
                                             {ans.answer}
                                         </button>
                                     </div>
