@@ -12,9 +12,9 @@ const Results = ({score}) => {
     var today = new Date();
     var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
 
-    const constructData = (score, date, name) => {
+    const constructData = (score, date, username) => {
 
-        Axios.post(url.score, {score,date,name})
+        Axios.post(url.score, {score,date,username})
             .then((res) => {
                 console.log(res.data)
             })
@@ -27,8 +27,8 @@ const Results = ({score}) => {
 
 
     return (
-        <div>
-            <div>
+        <div className='home-div'>
+            <div className='score'>
                 {score}
             </div>
             <input 
@@ -36,8 +36,7 @@ const Results = ({score}) => {
             name='name' 
             placeholder='Full Name'  
             onChange={e=> setYourName(e.target.value)} />
-            <button onClick={() => console.log(date)}>erfefwefw</button>
-            <button onClick={() => constructData(score, date, yourName )}>Submit</button>
+            <button className='submit-button' onClick={() => constructData(score, date, yourName )}>Submit</button>
         </div>
     )
 }

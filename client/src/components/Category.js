@@ -107,8 +107,10 @@ const Category = ({dispatch, questions, history}) => {
             <div className='categories'>
                 <div className='choose-category'>Choose a Category:</div>
                 <div onChange={(e) => categoryList(e)} className='radio-button'>
-                    <input type="radio" name="choise" value="all" className='all'/> All
-                    <input type="radio" name="choise" value="custom"/> Custom
+                    <input type="radio" name="choise" value="all" className='all'/> 
+                    <label htmlFor="all">All</label>
+                    <input type="radio" name="choise" value="custom"/>
+                    <label htmlFor="custom">Custom</label>
                 </div>
                 {showSelect && 
                     <div className='category-list'>
