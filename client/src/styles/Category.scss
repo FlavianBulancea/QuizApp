@@ -18,6 +18,14 @@
     }
     .radio-button {
         margin-left: 30%;
+        margin-top: 10px;
+        
+        > input {
+            margin-left: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: rgb(21, 108, 180);
+        }
     }
     .next-button {
         width: 200px;
