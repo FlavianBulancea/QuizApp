@@ -7,13 +7,14 @@
     border-radius: 10px;
     height: 70%;
     color: rgb(21, 108, 180);
-    font-size: 50px;
+    font-size: 40px;
     background-color: transparent;
     border: 3px solid rgb(113, 166, 236);
     z-index: 10;
 
     .index {
         margin-bottom: 30px;
+        margin-left: 20px;
     }
 
     .question-body {
@@ -23,12 +24,13 @@
     }
 
     .answers {
-        width: 20%;
-        margin: 30px 10%;
+        width: 500px;
+        margin-left: 230px;
+        margin-top: 30px;
         border-radius: 10px;
-        height: 8%;
+        height: 70px;
         color: rgb(21, 108, 180);
-        font-size: 30px;
+        font-size: 20px;
         background-color: transparent;
         border: 3px solid rgb(113, 166, 236);
         text-align: center;
