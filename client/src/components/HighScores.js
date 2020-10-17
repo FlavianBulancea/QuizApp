@@ -25,8 +25,17 @@ const HighScores = ({score}) => {
     }, []);
 
     return (
-        <div>
-            
+        <div className='home-div'>
+            <div className='high-scores'>High Scores:</div>
+            {first10.map(item => {
+                return (
+                    <div className='high' key={item.id}>
+                        <div className='username'>{item.username}</div>
+                        <div className='user-score'>{item.score}</div>
+                        <div className='date'>{item.date}</div>
+                    </div>
+                )
+            })}
         </div>
     )
 }
