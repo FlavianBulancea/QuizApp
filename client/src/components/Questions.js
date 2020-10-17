@@ -51,7 +51,7 @@ const Questions = ({dispatch, questions, history}) => {
                 if (id == item.id) {
                     return (
                         <div key={item.id} className='question-div'>
-                            <div className='index'>{index+1}/20</div>
+                            <div className='index'>{index+1}/{questions.length}</div>
                             <div className='question-body'>{item.question}</div>
 
                             {answers.map(ans => {

@@ -15,9 +15,9 @@
     width: 80%;
     overflow: hidden;
     grid-template-columns: 15% 15% 20% 20% 15% 15%;
-    margin-left: 600px;
+    margin-left: 650px;
 }
-.high > div{
+.high > div {
 
     line-height: 30px;
     color: rgb(21, 108, 180);
@@ -26,4 +26,19 @@
     padding: 5px 0 9px;
     font-size: 16px;
 
+}
+
+.go-back {
+    cursor: pointer;
+    position: absolute;
+    width: 300px;
+    margin-left: 76%;
+    margin-top: 2%;
+    border-radius: 10px;
+    height: 70px;
+    color: rgb(21, 108, 180);
+    font-size: 20px;
+    background-color: transparent;
+    border: 3px solid rgb(113, 166, 236);
+    text-align: center;
 }

@@ -14,15 +14,21 @@ const Results = ({score}) => {
 
     const constructData = (score, date, username) => {
 
-        Axios.post(url.score, {score,date,username})
-            .then((res) => {
-                console.log(res.data)
-            })
-            .catch((err) => {
-                console.log(err)
-                alert(err)
-            })
-        window.location.href = '/'
+        if(username === ''){
+            alert('Please enter a name')
+        } else {
+
+            Axios.post(url.score, {score,date,username})
+                .then((res) => {
+                    console.log(res.data)
+                })
+                .catch((err) => {
+                    console.log(err)
+                    alert(err)
+                })
+            window.location.href = '/'
+        }
+
     }
 
 
