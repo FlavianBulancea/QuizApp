@@ -22,20 +22,25 @@ const Results = ({score}) => {
                 console.log(err)
                 alert(err)
             })
- 
+        window.location.href = '/'
     }
 
 
     return (
         <div className='home-div'>
             <div className='score'>
-                {score}
+                You answered {score} questions correctly out of 20
             </div>
-            <input 
-            type="text" 
-            name='name' 
-            placeholder='Full Name'  
-            onChange={e=> setYourName(e.target.value)} />
+            <div className='div-with-input'>
+                <input 
+                type="text" 
+                name='name'
+                maxLength="20" 
+                placeholder='Full Name'  
+                onChange={e=> setYourName(e.target.value)}
+                className='input-name'
+                required />
+            </div>
             <button className='submit-button' onClick={() => constructData(score, date, yourName )}>Submit</button>
         </div>
     )
