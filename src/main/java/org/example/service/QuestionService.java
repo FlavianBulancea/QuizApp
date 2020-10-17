@@ -51,6 +51,10 @@ public class QuestionService {
 
         Collections.shuffle(questionDtoList);
 
+        while(questionDtoList.size()>10){
+            questionDtoList.remove(0);
+        }
+
         return questionDtoList;
     }
 }
