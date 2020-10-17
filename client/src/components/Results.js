@@ -6,7 +6,7 @@ import { url } from '../env'
 import Axios from 'axios'
 
 
-const Results = ({score}) => {
+const Results = ({score, questions}) => {
     const [yourName, setYourName] = useState('')
 
     var today = new Date();
@@ -35,7 +35,7 @@ const Results = ({score}) => {
     return (
         <div className='home-div'>
             <div className='score'>
-                You answered {score} questions correctly out of 20
+                You answered {score} questions correctly out of {questions?.length}
             </div>
             <div className='div-with-input'>
                 <input 
@@ -55,6 +55,7 @@ const Results = ({score}) => {
 const mapStateToProps = state => {
     return {
       score: state.scoreReducer.score,
+      questions: state.categoryReducer.questions,
     }
 }
   

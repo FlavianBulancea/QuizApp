@@ -1,6 +1,5 @@
 import React , {useState, useEffect} from 'react'
 
-import { connect } from 'react-redux'
 import { url } from '../env'
 import Axios from 'axios'
 
