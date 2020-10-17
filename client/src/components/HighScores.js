@@ -6,7 +6,7 @@ import Axios from 'axios'
 
 
 
-const HighScores = ({score}) => {
+const HighScores = ({history}) => {
 
     const [first10, setFirst10] = useState([])
 
@@ -36,14 +36,11 @@ const HighScores = ({score}) => {
                     </div>
                 )
             })}
+            <button className='go-back' onClick={() => history.push('/')}>Go Back</button>
         </div>
     )
 }
 
-const mapStateToProps = state => {
-    return {
-      score: state.scoreReducer.score,
-    }
-}
+
   
-export default connect(mapStateToProps)(HighScores)
+export default HighScores
