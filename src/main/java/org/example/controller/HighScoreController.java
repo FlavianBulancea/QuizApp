@@ -35,8 +35,6 @@ public class HighScoreController {
     @PostMapping
     public ResponseEntity<HighScoreDto> save(@RequestBody HighScoreDto highScoreDto){
 
-        System.out.println(highScoreDto);
-
         try {
             return new ResponseEntity<>(highScoreService.save(highScoreDto), HttpStatus.OK);
         } catch (NoNameInsertedException e) {

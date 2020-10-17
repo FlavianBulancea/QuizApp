@@ -34,7 +34,7 @@ public class HighScoreService {
 
     public HighScoreDto save(HighScoreDto highScoreDto) throws NoNameInsertedException {
 
-        if (highScoreDto.getUsername() == null)
+        if (highScoreDto.getUsername().equals(""))
             throw new NoNameInsertedException();
         HighScore highScore = highScoreMapper.dtoToModel(highScoreDto);
         highScore = highScoreRepository.save(highScore);
